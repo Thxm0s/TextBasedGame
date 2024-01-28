@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -258,9 +258,31 @@ namespace TextbasedGame
 
 
             Console.ReadKey();
-            Console.Clear();    
+            Console.Clear();
         }
 
+        public virtual void GameDraw()
+        {
+            Console.WriteLine(@"
+
+
+
+
+                                      _____  _____       __          ___ _ 
+                                     |  __ \|  __ \     /\ \        / / | |
+                                     | |  | | |__) |   /  \ \  /\  / /| | |
+                                     | |  | |  _  /   / /\ \ \/  \/ / | | |
+                                     | |__| | | \ \  / ____ \  /\  /  |_|_|
+                                     |_____/|_|  \_\/_/    \_\/  \/   (_|_)
+                                       
+                                       
+                                         
+                                    ");
+
+
+            Console.ReadKey();
+            Console.Clear();
+        }
 
 
         public virtual void Player1()
@@ -346,6 +368,193 @@ namespace TextbasedGame
                                             ");
         }
 
+        public virtual void Dice1()
+        {
+            Console.Clear();
+
+
+            Console.WriteLine(@"
+
+                                            -----
+                                            |   |
+                                            | o |
+                                            |   |
+                                            -----
+
+                                            
+                                            ");
+
+            Thread.Sleep(50);
+        }
+
+        public virtual void Dice2()
+        {
+            Console.Clear();
+
+
+            Console.WriteLine(@"
+
+                                            -----
+                                            |o  |
+                                            |   |
+                                            |  o|
+                                            -----
+
+                                            
+                                            ");
+            Thread.Sleep(50);
+        }
+        public virtual void Dice3()
+        {
+            Console.Clear();
+
+
+            Console.WriteLine(@"
+
+                                            -----
+                                            |o  |
+                                            | o |
+                                            |  o|
+                                            -----
+
+                                            
+                                            ");
+            Thread.Sleep(50);
+        }
+
+        public virtual void Dice4()
+        {
+            Console.Clear();
+
+
+            Console.WriteLine(@"
+
+                                            -----
+                                            |o o|
+                                            |   |
+                                            |o o|
+                                            -----
+
+                                            
+                                            ");
+            Thread.Sleep(50);
+        }
+
+        public virtual void Dice5()
+        {
+            Console.Clear();
+
+
+            Console.WriteLine(@"
+
+                                            -----
+                                            |o o|
+                                            | o |
+                                            |o o|
+                                            -----
+
+                                            
+                                            ");
+            Thread.Sleep(50);
+        }
+
+        public virtual void Dice6()
+        {
+            Console.Clear();
+
+
+            Console.WriteLine(@"
+
+                                            -----
+                                            |o o|
+                                            |o o|
+                                            |o o|
+                                            -----
+
+                                            
+                                            ");
+            Thread.Sleep(50);
+        }
+
+        public virtual void Type()
+        {
+            Console.WriteLine("You have landed on");
+            Console.WriteLine(@"
+                    ___________                   ___________                __   
+                    \__    ___/__.__.______   ____\_   _____/____    _______/  |_ 
+                      |    | <   |  |\____ \_/ __ \|    __) \__  \  /  ___/\   __\
+                      |    |  \___  ||  |_> >  ___/|     \   / __ \_\___ \  |  |  
+                      |____|  / ____||   __/ \___  >___  /  (____  /____  > |__|  
+                              \/     |__|        \/    \/        \/     \/        
+            ");
+        }
+
+        public virtual void Maths()
+        {
+            Console.WriteLine("You have landed on");
+            Console.WriteLine(@"
+                    ________        .__        __      _____          __  .__            
+                    \_____  \  __ __|__| ____ |  | __ /     \ _____ _/  |_|  |__   ______
+                     /  / \  \|  |  \  |/ ___\|  |/ //  \ /  \\__  \\   __\  |  \ /  ___/
+                    /   \_/.  \  |  /  \  \___|    </    Y    \/ __ \|  | |   Y  \\___ \ 
+                    \_____\ \_/____/|__|\___  >__|_ \____|__  (____  /__| |___|  /____  >
+                           \__>             \/     \/       \/     \/          \/     \/ 
+            ");
+        }
+
+        public virtual void Noughts()
+        {
+            Console.WriteLine("You have landed on");
+            Console.WriteLine(@"
+                             _______                      .__     __            
+                             \      \   ____  __ __  ____ |  |___/  |_  ______  
+                             /   |   \ /  _ \|  |  \/ ___\|  |  \   __\/  ___/  
+                            /    |    (  <_> )  |  / /_/  >   Y  \  |  \___ \   
+                            \____|__  /\____/|____/\___  /|___|  /__| /____  >  
+                                    \/            /_____/      \/          \/   
+                                 ____                                           
+                                /  _ \                                          
+                                >  _ </\                                        
+                               /  <_\ \/                                        
+                               \_____\ \                                        
+                                      \/                                        
+                            _________                                           
+                            \_   ___ \_______  ____  ______ ______ ____   ______
+                            /    \  \/\_  __ \/  _ \/  ___//  ___// __ \ /  ___/
+                            \     \____|  | \(  <_> )___ \ \___ \\  ___/ \___ \ 
+                             \______  /|__|   \____/____  >____  >\___  >____  >
+                                    \/                  \/     \/     \/     \/ 
+ 
+                ");
+        }
+
+        public virtual void Dash()
+        {
+            Console.WriteLine("You have landed on");
+            Console.WriteLine(@"
+                                        ___          _     
+                                       /   \__ _ ___| |__  
+                                      / /\ / _` / __| '_ \ 
+                                     / /_// (_| \__ \ | | |
+                                    /___,' \__,_|___/_| |_|                     
+ 
+                ");
+
+        }
+
+        public virtual void Backward()
+        {
+            Console.WriteLine("You have landed on");
+            Console.WriteLine(@"
+                           ___            _                           _     
+                          / __\ __ _  ___| | ____      ____ _ _ __ __| |___ 
+                         /__\/// _` |/ __| |/ /\ \ /\ / / _` | '__/ _` / __|
+                        / \/  \ (_| | (__|   <  \ V  V / (_| | | | (_| \__ \
+                        \_____/\__,_|\___|_|\_\  \_/\_/ \__,_|_|  \__,_|___/                                                                     
+ 
+                ");
+
+        }
     }
 }
 
