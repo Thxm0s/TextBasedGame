@@ -26,9 +26,6 @@ namespace TextbasedGame
         public virtual bool game()
         {
 
-            Xand0 xand0 = new Xand0();
-
-
             //rule explaining
             Console.WriteLine("Do you need to know the rules (y/n)");
             string ans = Console.ReadLine();
@@ -53,10 +50,9 @@ namespace TextbasedGame
                                { "-", "-", "-", } };
 
             int count = 0;
-            bool win = false;
 
 
-            xand0.GetGrid(Grid);
+            GetGrid(Grid);
 
 
 
@@ -121,12 +117,7 @@ namespace TextbasedGame
                     // showing the win
 
 
-                    xand0.GetGrid(Grid);
-
-
-                    Console.WriteLine("Crosses win");
-
-                    win = true;
+                    GetGrid(Grid);
 
                     WinScreen();
 
@@ -139,9 +130,9 @@ namespace TextbasedGame
 
 
 
-                else if (count == 9 && win == false)
+                else if (count == 9)
                 {
-                    xand0.GetGrid(Grid);
+                    GetGrid(Grid);
                     GameDraw();
 
 
@@ -199,13 +190,10 @@ namespace TextbasedGame
                 {
 
 
-                    xand0.GetGrid(Grid);
+                    GetGrid(Grid);
 
 
                     // ComputerWin();
-
-
-                    win = true;
 
                     ComputerWin();
 
@@ -220,7 +208,7 @@ namespace TextbasedGame
                 else
                 {
 
-                    xand0.GetGrid(Grid);
+                    GetGrid(Grid);
 
                     continue;
                 }
