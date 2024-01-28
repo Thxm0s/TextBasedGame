@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.ComponentModel.DataAnnotations;
 using System.Numerics;
 
@@ -65,14 +65,6 @@ namespace TextbasedGame
             // turns
             int Turn = 0;
 
-            /*
-                        Player[] players = new Player[3]; // adding players to the game giving each a class
-
-                        players[0] = new Player("thomas");
-                        players[1] = new Player("reuban");
-                        players[2] = new Player("oliver");
-
-            */
 
 
             // Screens
@@ -84,6 +76,8 @@ namespace TextbasedGame
 
                 foreach (Player a in players)
                 {
+
+                    // printing the player number
 
                     switch (PlayerNum)
                     {
@@ -108,8 +102,12 @@ namespace TextbasedGame
                     PlayerNum++;
 
 
-                    Console.WriteLine("CURRENT SPACE: " + a.space + "\n");
-                    a.rolldice();
+
+                    Console.WriteLine("CURRENT SPACE: " + a.space + "\n"); //printing the current space
+                    Console.WriteLine("press to roll");
+                    Console.ReadKey();
+
+                    a.rolldice(); // rolling the dice
 
 
                     Console.WriteLine(a.name + ", You have rolled a " + a.roll + "\nNEW SPACE: " + a.space);
@@ -119,6 +117,9 @@ namespace TextbasedGame
 
                     if (a.space >= NumberOfSpaces)
                     {
+
+                        Screen.EndScreen();
+
                         Console.WriteLine("\t\t\t\tCONGRATULATIONS " + a.name + "\n \n you have successfully escaped the island and now you are free, leaving all the other to stay stranded forever.");
 
                         finished = false;
@@ -127,7 +128,7 @@ namespace TextbasedGame
                     else
                     {
                         string consequence = S.Consequences();
-                        Console.WriteLine(consequence);
+                        Console.WriteLine("Press to find your tile\n\n");
                         Console.ReadKey();
 
 
@@ -143,19 +144,31 @@ namespace TextbasedGame
                             case ("TypeFast"):
                                 TypeFast T = new TypeFast();
 
+                               
+                                Screen.Type();
+
+
+
                                 if (T.game() == true)
                                 {
                                     int TMove = S.MoveSpaces();
 
+
+
                                     a.space += TMove;
 
                                     Console.WriteLine("You have gained " + TMove + " spaces");
+                                    Console.ReadKey();
                                 }
 
                                 break;
 
                             case ("Xand0s"):
                                 Xand0 X = new Xand0();
+
+                                Screen.Noughts();
+
+
                                 if (X.game() == true)
                                 {
                                     int XMove = S.MoveSpaces();
@@ -163,6 +176,7 @@ namespace TextbasedGame
                                     a.space += XMove;
 
                                     Console.WriteLine("You have gained " + XMove + " spaces");
+                                    Console.ReadKey();
                                 }
                                 break;
 
@@ -170,6 +184,8 @@ namespace TextbasedGame
                             case ("quickMaths"):
                                 QuickMaths M = new QuickMaths();
 
+
+                                Screen.Maths();
 
                                 if (M.game() == true)
                                 {
@@ -180,6 +196,7 @@ namespace TextbasedGame
                                     a.space += MMove;
 
                                     Console.WriteLine("You have gained " + MMove + " spaces");
+                                    Console.ReadKey();
                                 }
 
                                 break;
@@ -192,7 +209,7 @@ namespace TextbasedGame
                                 int Backward = S.MoveSpaces();
                                 a.space -= Backward;
 
-
+                                Screen.Backward();
 
                                 Console.WriteLine("Move back " + Backward + " Spaces");
                                 Console.ReadKey();
@@ -209,7 +226,7 @@ namespace TextbasedGame
 
                                 a.space += Forward;
 
-
+                                Screen.Dash();
 
                                 Console.WriteLine("Move FORWARD " + Forward + " Spaces");
                                 Console.ReadKey();
@@ -231,16 +248,6 @@ namespace TextbasedGame
                     }
 
                 }
-
-                /*
-                                if (A.space >= NumberOfSpaces | space >= NumberOfSpaces | C.space >= NumberOfSpaces)
-                                {
-                                    Console.WriteLine("\t\t\t\tCONGRATULATIONS\n \n you have successfully escaped the island and now you are free, leaving all the other to stay stranded forever.");
-
-                                    finished = false;
-                                }
-
-                  */
                 Turn += 1;
             }
 
