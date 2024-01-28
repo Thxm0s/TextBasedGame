@@ -1,4 +1,3 @@
-﻿
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,6 +25,10 @@ namespace TextbasedGame
         }
         public virtual bool game()
         {
+
+            Xand0 xand0 = new Xand0();
+
+
             //rule explaining
             Console.WriteLine("Do you need to know the rules (y/n)");
             string ans = Console.ReadLine();
@@ -53,7 +56,7 @@ namespace TextbasedGame
             bool win = false;
 
 
-            GetGrid(Grid);
+            xand0.GetGrid(Grid);
 
 
 
@@ -76,7 +79,7 @@ namespace TextbasedGame
 
                 while (true)
                 {
-                    if (Grid[row, column] == "0" || Grid[row, column] == "X")
+                    if (Grid[column, row] != "-")
                     {
                         Console.WriteLine("Choose again");
                         intake = Console.ReadLine();
@@ -87,7 +90,7 @@ namespace TextbasedGame
                     }
                     else
                     {
-                        Grid[row, column] = "X";
+                        Grid[column, row] = "X";
                         count++;
                         break;
 
@@ -97,11 +100,53 @@ namespace TextbasedGame
                 }
 
 
-                if (count == 9 && win == false)
+                // win conditions
+
+                // if crosses win
+                if (
+                    // horizontal wins
+                    Grid[0, 0] == "X" && Grid[0, 1] == "X" && Grid[0, 2] == "X" ||
+                    Grid[1, 0] == "X" && Grid[1, 1] == "X" && Grid[1, 2] == "X" ||
+                    Grid[2, 0] == "X" && Grid[2, 1] == "X" && Grid[2, 2] == "X" ||
+                    // vertical wins 
+                    Grid[0, 0] == "X" && Grid[1, 0] == "X" && Grid[2, 0] == "X" ||
+                    Grid[0, 1] == "X" && Grid[1, 1] == "X" && Grid[2, 1] == "X" ||
+                    Grid[0, 2] == "X" && Grid[1, 2] == "X" && Grid[2, 2] == "X" ||
+                    //diagonal wins
+                    Grid[0, 0] == "X" && Grid[1, 1] == "X" && Grid[2, 2] == "X" ||
+                    Grid[0, 2] == "X" && Grid[1, 1] == "X" && Grid[2, 0] == "X")
+
                 {
 
-                    Console.WriteLine("DRAW!");
-                    break;
+                    // showing the win
+
+
+                    xand0.GetGrid(Grid);
+
+
+                    Console.WriteLine("Crosses win");
+
+                    win = true;
+
+                    WinScreen();
+
+                    return true;            
+
+                }
+
+
+
+
+
+
+                else if (count == 9 && win == false)
+                {
+                    xand0.GetGrid(Grid);
+                    GameDraw();
+
+
+
+                    return false;
 
                 }
 
@@ -121,9 +166,9 @@ namespace TextbasedGame
                     row = rand.Next(0, 3);
                     column = rand.Next(0, 3);
 
-                    if (Grid[row, column] == "-")
+                    if (Grid[column, row] == "-")
                     {
-                        Grid[row, column] = "0";
+                        Grid[column, row] = "0";
                         count++;
                         break;
                     }
@@ -134,57 +179,12 @@ namespace TextbasedGame
                 }
 
 
-                if (count == 9 && win == false)
-                {
-
-                    Console.WriteLine("DRAW!");
-                    break;
-
-                }
-
-                // win conditions
-
-                // if crosses win
-                if (
-                    // horizontal wins
-                    Grid[0, 0] == "X" && Grid[0, 1] == "X" && Grid[0, 2] == "X" ||
-                    Grid[1, 0] == "X" && Grid[1, 1] == "X" && Grid[1, 2] == "X" ||
-                    Grid[2, 0] == "X" && Grid[2, 1] == "X" && Grid[2, 2] == "X" ||
-                    // vertical wins 
-                    Grid[0, 0] == "X" && Grid[1, 0] == "X" && Grid[2, 0] == "X" ||
-                    Grid[0, 1] == "X" && Grid[1, 1] == "X" && Grid[2, 1] == "X" ||
-                    Grid[0, 2] == "X" && Grid[1, 2] == "X" && Grid[2, 2] == "X" ||
-                    //diagonal wins
-                    Grid[0, 0] == "X" && Grid[1, 1] == "X" && Grid[2, 2] == "X" ||
-                    Grid[0, 2] == "X" && Grid[1, 1] == "X" && Grid[0, 2] == "X")
-
-                {
-
-                    // showing the win
-
-
-                    GetGrid(Grid);
-
-
-                    Console.WriteLine("Crosses win");
-
-
-                    WinScreen();
-
-                    win = true;
-
-                    return true;
-
-                }
-
-
-
 
                 // if circles win
 
 
 
-                else if (
+                if (
                     //horizontal wins
                     Grid[0, 0] == "0" && Grid[0, 1] == "0" && Grid[0, 2] == "0" ||
                     Grid[1, 0] == "0" && Grid[1, 1] == "0" && Grid[1, 2] == "0" ||
@@ -195,11 +195,11 @@ namespace TextbasedGame
                     Grid[0, 2] == "0" && Grid[1, 2] == "0" && Grid[2, 2] == "0" ||
                     //diagonal wins
                     Grid[0, 0] == "0" && Grid[1, 1] == "0" && Grid[2, 2] == "0" ||
-                    Grid[0, 2] == "0" && Grid[1, 1] == "0" && Grid[0, 2] == "0")
+                    Grid[0, 2] == "0" && Grid[1, 1] == "0" && Grid[2, 0] == "0")
                 {
 
 
-                    GetGrid(Grid);
+                    xand0.GetGrid(Grid);
 
 
                     // ComputerWin();
@@ -207,15 +207,11 @@ namespace TextbasedGame
 
                     win = true;
 
-                    break;
+                    ComputerWin();
 
-                }
-                else if (count == 9 && win == false)
-                {
 
-                    Console.WriteLine("DRAW!");
-                    break;
-
+                    return false;
+                    
                 }
 
                 // if no one has won yet
@@ -224,18 +220,14 @@ namespace TextbasedGame
                 else
                 {
 
-                    GetGrid(Grid);
-                    count++;
+                    xand0.GetGrid(Grid);
+
                     continue;
                 }
             }
 
 
-
-             LoseScreen();
-             return false;
-
-
+            
 
 
 
@@ -243,6 +235,3 @@ namespace TextbasedGame
 
     }
 }
-
-
-
