@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,7 +7,7 @@ using System.Threading;
 
 namespace TextbasedGame
 {
-    class Player
+    class Player : Screens
     {
         public int space;
         public int roll;
@@ -16,14 +16,57 @@ namespace TextbasedGame
         public virtual void rolldice()
         {
             Random rnd = new Random();
-            int roll1 = rnd.Next(1, 6);   // rolling both dices
-            int roll2 = rnd.Next(1, 6);
-
-            roll = roll1 + roll2;
 
 
+            roll = 0;
+            for (int i = 0; i<2; i++)
+            {
+                int rolled = rnd.Next(1, 6);   // rolling both dices
 
-            space += (roll1 + roll2);
+
+                for (int j = 0; j < 5; j++)
+                {
+                    int k = rnd.Next(1, 6);
+
+                    if (j == 4)
+                    {
+                        k = rolled;
+                    }
+
+                    switch (k)
+                    {
+                        case (1):
+                            Dice1();
+                            break;
+                        case (2):
+                            Dice2();
+                            break;
+                        case (3):
+                            Dice3();
+                            break;
+                        case (4):
+                            Dice4();
+                            break;
+                        case (5):
+                            Dice5();
+                            break;
+                        case (6):
+                            Dice6();
+                            break;
+
+                    }
+
+                }
+                roll += rolled;
+
+                space = space + rolled;
+                Console.WriteLine("Press to continue\n\n");
+            
+                Console.ReadKey();
+                Console.Clear();
+            }
+
+          
 
 
 
